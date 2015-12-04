@@ -1,0 +1,9 @@
+<%= link_to "New Thread", new_forum_thread_path, class: "btn btn-primary pull-right" %>
+
+<h1>Threads</h1>
+
+<% @forum_threads.each do |forum_thread| %>
+  <div>
+    <%= link_to forum_thread.title, forum_thread %>
+  </div>
+<% end %>

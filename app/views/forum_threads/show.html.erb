@@ -1,0 +1,15 @@
+<p><%= link_to "Back to all threads", forum_threads_path %></p>
+
+<h1><%= @forum_thread.title %></h1>
+<hr />
+
+<% @forum_thread.forum_posts.includes(:user).each do |forum_post| %>
+  <div>
+    <p><%= forum_post.user.email %> posted:</p>
+    <%= simple_format forum_post.body %>
+  </div>
+
+  <hr />
+<% end %>
+
+<%= render partial: "forum_posts/form" %>

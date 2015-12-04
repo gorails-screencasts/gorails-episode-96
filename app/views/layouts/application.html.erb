@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GorailsForum</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <nav class="navbar navbar-light bg-faded">
+    <a class="navbar-brand" href="#">GoRails Forum</a>
+    <ul class="nav navbar-nav pull-right">
+      <% if user_signed_in? %>
+        <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+      <% else %>
+        <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
+</body>
+</html>
